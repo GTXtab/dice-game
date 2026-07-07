@@ -18,25 +18,31 @@ Implementation of the test task: A dice game built with React (Next.js) + TypeSc
 
 ## Project Structure
 
+```text
 src/
-components/ 
-  dice-game/  # Game UI (MUI)
-    DiceDisplay.tsx
-    GameControls.tsx
-    GameHistoryTable.tsx
-    GameStatusAlert.tsx
-  DiceGame.tsx       
-hooks/
-  useDiceGame.ts     # Game core logic (state, roll execution, history) — decoupled from UI
-  useDiceGame.test.ts
-types/
-  game.types.ts            # Type definitions & constants (Condition, MAX_HISTORY_LENGTH, MIN/MAX_ROLL)
-pages/
-  api/
-    roll.ts          # Mock API 
-  _app.tsx           # ThemeProvider + CssBaseline
-  index.tsx          # Main entrypoint page
-theme.ts             # Custom MUI theme configuration
+├── components/
+│   ├── DiceGame.tsx            # Main game container component
+│   └── dice-game/              # Atomic modular sub-components
+│       ├── dice-display.tsx
+│       ├── game-controls.tsx
+│       ├── game-history.tsx
+│       ├── game-status.tsx
+│       └── index.tsx           # Barrel file for clean sub-component imports
+├── hooks/
+│   ├── useDiceGame.ts          # Core decoupled game execution hook (state, handlers)
+│   └── useDiceGame.test.ts     # Isolated unit tests covering handlers & reactivity
+├── pages/
+│   ├── _app.tsx                # Context wrapper (MUI ThemeProvider + CssBaseline)
+│   ├── index.tsx               # Client landing entrypoint page route
+│   └── api/
+│       └── roll.ts             # Mock server API rolling simulation logic
+├── types/
+│   └── game.types.ts           # Type dictionaries, definitions & schema shapes
+├── utils/
+│   ├── const.ts                # Immutable configuration rules & ranges
+│   └── formatTime.ts           # Pure temporal styling formatting utility
+└── theme.ts                    # Root customizable Material UI palette definitions
+```
 
 ## Getting Started
 
